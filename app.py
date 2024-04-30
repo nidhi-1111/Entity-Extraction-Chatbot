@@ -20,18 +20,22 @@ def getLLamaresponse(input_text):
     """
         Please analyze the {input_text} and extract the following information:
             * Person's name
+            * Company's name they are associate with
+            * Person's identity
             * Email address
             * Job role
             * Availability 
-            * Reason they are intersted in Keelworks
+            * Reason they are intersted in meeting
+        Once you identify this please answer this in a table mentioning "Yes" or "No" for above extarcted information. 
         In case no information is found, please indicate that.
     """)
 
     # generate the response from llama 2 model
     chain = prompt | llm
-    print(chain)
+    # print(chain)
     response = chain.invoke({"input_text":input_text})
-    print(response.content)
+    # print(response.content)
+
     return response
 
 
