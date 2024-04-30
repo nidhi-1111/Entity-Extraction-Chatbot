@@ -1,0 +1,9 @@
+sentence-transformers
+uvicorn
+ctransformers
+langchain
+python-box
+streamlit
+groq
+langchain-groq
+python-dotenv
