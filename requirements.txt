@@ -7,3 +7,4 @@ streamlit
 groq
 langchain-groq
 python-dotenv
+langchain-community
