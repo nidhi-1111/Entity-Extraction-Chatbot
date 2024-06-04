@@ -6,12 +6,34 @@ from langchain_core.prompts import ChatPromptTemplate
 
 from dotenv import load_dotenv
 load_dotenv()
+
 import os
+
+import json
+import re
+
+# Load the predefined questions and answers from the JSON file
+# with open('predefined_qa.json', 'r') as f:
+#     predefined_qa_data = json.load(f)
+
+# Create a dictionary from the loaded data
+# predefined_qa = {qa['pattern']: qa['answer'] for qa in predefined_qa_data['questions']}
+
+def get_predefined_response(input_text):
+    """
+    Check if the input text matches any predefined question.
+    If a match is found, return the corresponding predefined answer.
+    Otherwise, return None.
+    """
+    for pattern, answer in predefined_qa.items():
+        if re.search(pattern, input_text, re.IGNORECASE):
+            return answer
+    return None
 
 ## Load the Groq API key
 groq_api_key = os.getenv('GROQ_API_KEY')
-# Funciton to get respone from LLAma 2 model
 
+# Funciton to get respone from LLAma 2 model
 def getLLamaresponse(input_text):
     # calling llama 3 -8b model with groq
     llm = ChatGroq(temperature=0.01,model="llama3-8b-8192",groq_api_key=groq_api_key)
