@@ -1,6 +1,7 @@
 import streamlit as st
+from streamlit.components.v1 import html
 from langchain.prompts import PromptTemplate
-from langchain.llms import CTransformers
+from langchain_community.llms import CTransformers
 from langchain_groq import ChatGroq
 from langchain_core.prompts import ChatPromptTemplate
 
@@ -9,28 +10,7 @@ load_dotenv()
 
 import os
 
-import json
-import re
-
-# Load the predefined questions and answers from the JSON file
-# with open('predefined_qa.json', 'r') as f:
-#     predefined_qa_data = json.load(f)
-
-# Create a dictionary from the loaded data
-# predefined_qa = {qa['pattern']: qa['answer'] for qa in predefined_qa_data['questions']}
-
-def get_predefined_response(input_text):
-    """
-    Check if the input text matches any predefined question.
-    If a match is found, return the corresponding predefined answer.
-    Otherwise, return None.
-    """
-    for pattern, answer in predefined_qa.items():
-        if re.search(pattern, input_text, re.IGNORECASE):
-            return answer
-    return None
-
-## Load the Groq API key
+# Load the Groq API key
 groq_api_key = os.getenv('GROQ_API_KEY')
 
 # Funciton to get respone from LLAma 2 model
@@ -61,21 +41,34 @@ def getLLamaresponse(input_text):
     return response
 
 
+# Predefined questions and answers
+predefined_qa = {
+    "What is your company's mission?": "Our company's mission is to revolutionize the industry with innovative solutions.",
+    "How can I contact customer support?": "You can contact our customer support via email at support@keelworks.com or call us at (123) 456-7890.",
+    "What services do you offer?": "We offer a range of services including consulting, development, and support for various tech solutions.",
+    "Where are you located?": "We are located at 123 Main Street, Anytown, USA.",
+    "What are your business hours?": "Our business hours are Monday to Friday, 9 AM to 5 PM."
+}
+
 st.set_page_config(page_title='Keelworks Support Chatbot',
                    layout = 'centered',
                    initial_sidebar_state='collapsed')
 
 st.header("Keelworks Support Chatbot")
 
-input_text = st.text_input("Enter your query here ")
 
-submit = st.button('Submit')
+# Select a predefined question
+question = st.selectbox("Choose a predefined question", list(predefined_qa.keys()))
 
-# Final Response
+# Button to display the predefined answer
+if st.button('Show Answer'):
+    st.write(predefined_qa[question])
 
-if submit:
+# Option to enter a custom query
+st.subheader("Or enter your own query")
+input_text = st.text_input("Enter your query here")
+
+# Button to get response from LLaMA model
+if st.button('Submit'):
     response = getLLamaresponse(input_text)
     st.write(response.content)
-
-
-
