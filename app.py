@@ -43,10 +43,10 @@ def getLLamaresponse(input_text):
 
 # Predefined questions and answers
 predefined_qa = {
-    "What is your company's mission?": "Our company's mission is to revolutionize the industry with innovative solutions.",
-    "How can I contact customer support?": "You can contact our customer support via email at support@keelworks.com or call us at (123) 456-7890.",
-    "What services do you offer?": "We offer a range of services including consulting, development, and support for various tech solutions.",
-    "Where are you located?": "We are located at 123 Main Street, Anytown, USA.",
+    "What is your company's mission?": "We get people to work - anyone unemployed. We champion full inclusion and upward mobility for the economically disadvantaged.",
+    "How can I contact customer support?": "You can contact our customer support via email at https://keelworks.org/contact or call at +1 425.765-2330",
+    # "What services do you offer?": "We offer a range of services including consulting, development, and support for various tech solutions.",
+    "Where are you located?": "We are located at 2398 West Beach Road, Oak Harbor, WA 98277",
     "What are your business hours?": "Our business hours are Monday to Friday, 9 AM to 5 PM."
 }
 
