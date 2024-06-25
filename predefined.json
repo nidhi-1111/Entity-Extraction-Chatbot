@@ -1,0 +1,12 @@
+{
+    "questions": [
+        {
+            "pattern": "what\\s+is\\s+this\\s+ngo\\s+doing",
+            "answer": "This NGO is working towards providing education and healthcare facilities to underprivileged communities."
+        },
+        {
+            "pattern": "what\\s+is\\s+the\\s+objective\\s+of\\s+ngo",
+            "answer": "The main objective of this NGO is to empower and uplift marginalized sections of society through various social welfare programs."
+        }
+    ]
+}
