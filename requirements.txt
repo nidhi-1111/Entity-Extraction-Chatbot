@@ -1,0 +1,9 @@
+ipykernel
+ipywidgets
+jupyter
+nltk
+numpy
+scikit-learn
+sentence-transformers
+torch
+transformers
